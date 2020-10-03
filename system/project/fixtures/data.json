@@ -1,0 +1,34 @@
+[
+{
+    "model": "games.games",
+    "pk": 1,
+    "fields": {
+        "points": 12,
+        "game_date": null
+    }
+},
+{
+    "model": "games.games",
+    "pk": 2,
+    "fields": {
+        "points": 24,
+        "game_date": null
+    }
+},
+{
+    "model": "games.games",
+    "pk": 3,
+    "fields": {
+        "points": 10,
+        "game_date": null
+    }
+},
+{
+    "model": "games.games",
+    "pk": 4,
+    "fields": {
+        "points": 24,
+        "game_date": null
+    }
+}
+]

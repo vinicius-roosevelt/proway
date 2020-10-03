@@ -1,0 +1,17 @@
+{% extends 'components/layout.html' %}
+
+{% block title %} Excluindo Objeto {% endblock title %}
+{% block page_content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="card mt-3">
+            <div class="card-body">
+              <h2>Tem certeza que deseja exluir o {{ object }}</h2>
+              <button type="submit" class="btn btn-danger">Excluir</button>
+              <a href="{% url 'games:list-games' %}">
+                <button type="button" class="btn btn-primary">Cancelar</button>
+              </a>
+            </div>
+          </div>
+    </form>
+{% endblock page_content %}

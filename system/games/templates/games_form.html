@@ -1,0 +1,36 @@
+{% extends 'components/layout.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block title %} Adicionar Jogo {% endblock title %}
+
+{% block extracss%}
+<style>
+.ui-datepicker-header{
+    background: #7a7a7a;
+    border: none;
+}
+
+.ui-state-hover{
+    background: white;
+}
+</style>
+{% endblock extracss%}
+
+
+{% block page_content %}
+<h1 class="mt-4">Inserir novo Jogo</h1>
+<div class="row">
+    <form method="POST">{% csrf_token %}
+        {% for field in form %}
+            {% bootstrap_field field %}
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Adicionar Jogo</button>
+        <a href="{% url 'games:list-games' %}"> <button type="button" class="btn btn-danger">Cancelar</button> </a>
+    </form>
+</div>
+{% endblock page_content %}
+
+{% block extrajs %}
+    <script src="{% static 'js/game_form.js' %}"></script>
+{% endblock extrajs %}

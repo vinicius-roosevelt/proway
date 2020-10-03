@@ -1,0 +1,26 @@
+{% extends 'components/base.html' %}
+
+{% block layout %}
+<!-- HEADER -->
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'games:list-games' %}">Dashboard</a>
+</nav>
+<!-- BODY -->
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid page-content">
+            {% block page_content %}
+            {% endblock page_content%}
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Desafio Técnico - Vinicius Roosevelt 2020</div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- FOOTER -->
+
+{% endblock layout %}

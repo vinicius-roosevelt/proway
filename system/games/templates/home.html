@@ -1,0 +1,170 @@
+{% extends 'components/layout.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-lg-4">
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-4">Dashboard</h1>
+            </div>
+        </div>
+        <div class="mb-3">
+            <a href="{% url 'games:create-game' %}"><button type="button" class="btn btn-success mt-2">Adicionar jogo</button></a>
+        </div>
+    </div>
+    <div class="col-lg-8 my-4">
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Máximo da Temporada</h5>
+                  <p class="card-text">
+                    {% if max_season is not none %}
+                        <h5 class="card-text">{{ max_season }}</h5>
+                    {% else %}
+                        <h5 class="card-text">Sem jogos registrados</h5>    
+                    {% endif %}
+                </p>
+                </div>
+              </div>
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Mínimo da temporada</h5>
+                    {% if min_season is not none %}
+                        <h5 class="card-text">{{ min_season }}</h5>
+                    {% else %}
+                        <h5 class="card-text">Sem jogos registrados</h5>    
+                    {% endif %}
+                </div>
+              </div>
+
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">Recorde Máx. quebrado  </h5>
+                <h5 class="card-text">{{ break_max_amount }}x</h5>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Recorde Mín. quebrado</h5>
+                  <h5 class="card-text">{{ break_min_amount }}x</h5>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Jogos Registrados
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th style="min-width: 75px;">Jogo</th>
+                        <th style="min-width: 95px;">Pontos</th>
+                        <th>Data do jogo</th>
+                        <th>Max. Pontos Temporada</th>
+                        <th>Min. Pontos Temporada</th>
+                        <th>É quebra de recorde max? (Quantidade)</th>
+                        <th>É quebra de recorde min? (Quantidade)</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Jogo</th>
+                        <th>Pontos</th>
+                        <th>Data do jogo</th>
+                        <th>Max. Pontos Temporada</th>
+                        <th>Min. Pontos Temporada</th>
+                        <th>É quebra de recorde max? (Quantidade)</th>
+                        <th>É quebra de recorde min? (Quantidade)</th>
+                        <th>Ações</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for game in object_list %}
+                        <tr>
+                            <td>{{ game.id }}</td>
+                            <td>{{ game.points }}</td>
+                            
+                            <td>{% if game.game_date is not None %}{{ game.game_date|date:"d/m/Y" }}{% else %}Sem data{% endif %}</td> <!--  DATE -->
+                            <td>{{ game.get_max_season }}</td>
+                            <td>{{ game.get_min_season }}</td>
+
+                            <td style="text-align:center;">
+                                {% if game.get_is_max_break %}
+                                    <i class="fas fa-check"></i>
+                                    <div class="field-value" style="display: none;">s</div>
+                                    ({{ game.get_max_breaks_amount }}x)
+                                {% else %}
+                                    <div class="field-value" style="display: none;">n</div>
+                                    <i class="fas fa-times"></i>
+                                {% endif %}
+                            </td>
+
+                            <td style="text-align:center;">
+                                {% if game.get_is_min_break %}
+                                    <i class="fas fa-check"></i>
+                                    <div class="field-value" style="display: none;">s</div>
+                                ({{ game.get_min_breaks_amount }}x)
+                                {% else %}
+                                    <i class="fas fa-times"></i>
+                                    <div class="field-value" style="display: none;">n</div>
+                                {% endif %}
+                            </td>
+                            
+                            <!-- Table Actions -->
+                            <td> 
+                                <a href="{{ game.get_update_url }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ game.get_delete_url }}" title="Excluir"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}           
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-area mr-1"></i>
+                Jogos
+            </div>
+            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-bar mr-1"></i>
+                Jogos
+            </div>
+            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+        </div>
+    </div>
+</div>
+
+{% endblock page_content %}
+
+{% block extrajs %}
+<script>
+    let games =  [];
+    {% for game in object_list %}
+        games.push({
+            gameCode: "{{ game.id }}",
+            gamePoints: "{{ game.points }}"
+        });
+    {% endfor %}
+
+    let gamesLabels = [];
+    let gamesResults = [];
+</script>
+{% endblock extrajs %}
