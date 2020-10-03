@@ -50,19 +50,18 @@ git clone https://github.com/vinicius-roosevelt/proway.git
 ```
 Caso o git nao esteja instalado, voce pode fazer o download do código [aqui](https://github.com/vinicius-roosevelt/proway) e extrair a pasta compactada no diretório que desejar.
 
-#### 2. Instalando dependencias e pacotes:
-O sistema conta com algums pacotes python para que funcione normalmente. Para instalar tais pacotes, vá até a pasta '/env/Scripts'<br>
-Antes de instalar as dependencias, é necessário inicializar nosso ambiente virtual. Para isso devemos executar o seguinte comando:
+#### 2. Inicializando o ambiente virtual:
+Para inicializar o ambiente virtual, e assim, instalar os pacotes e rodar o servidor, vá até a pasta '/env/Scripts' com o propt de comando do windows<br>
+com o prompt de comando no diretório especificado, deve-se executar o seguinte comando:
 
-Use o prompt de comando:
 ```
 activate.bat
 ```
 
-Se o ambiente virtual estiver inicializado, irá aparecer "(env)" no início das linhas de comando.
+Quando o ambiente virtual estiver inicializado, irá aparecer "(env)" no início das linhas de comando.
 
 #### 3. Instale as dependencias no ambiente virtual
-Para isso, volte até o diretório '/env' e digite o comando
+Para instalar os pacotes e dependencias, volte até o diretório '/env' no prompt de comando e digite o comando
 
 ```
 pip install -r requirements.txt
@@ -72,13 +71,13 @@ Com isso o python irá instalar, automaticamente, todos os pacotes que foram uti
 
 #### 4. Inicie o servidor web
 
-Depois de seguir os passos, nosso ambiente virtual está preparado e configurado para rodar o sistema. Agora, é preciso ir na pasta '/system/' e rodar o seguinte comando:
+Depois de seguir os passos, nosso ambiente virtual está preparado e configurado para rodar o sistema. Agora, é preciso ir na pasta '/system/', ainda no prompt de comando, e rodar o seguinte comando:
 
 ```
 python manage.py runserver 
 ```
 
-Após isso, o sistema irá apresentar algo como:
+Após isso, o prompt irá apresentar algo como:
 ```
 Watching for file changes with StatReloader
 Performing system checks...
