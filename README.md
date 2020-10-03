@@ -4,8 +4,8 @@
     Created by: Vinicius Roosevelt Santos Dias
  -->
 
-<p align="center" style="width: 500px;">
-    <img src="https://www.flaticon.com/svg/static/icons/svg/1822/1822899.svg"><br/>
+<p align="center">
+    <img style="width: 500px;" src="https://www.flaticon.com/svg/static/icons/svg/1822/1822899.svg"><br/>
     Projeto do desafio prático - Pública Tecnologia
 </p>
 
