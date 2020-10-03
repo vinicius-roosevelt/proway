@@ -1,5 +1,0 @@
-ordem de comandos
-
-1- python manage.py loaddata project/fixtures/data.json (carrega os 4 jogos padrão do sistema)
-
-2- python manage.py runserver (rodar o servidor) - aqui já está ok pra usar

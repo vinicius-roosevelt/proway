@@ -25,7 +25,7 @@
         {% for field in form %}
             {% bootstrap_field field %}
         {% endfor %}
-        <button type="submit" class="btn btn-success">Adicionar Jogo</button>
+        <button type="submit" class="btn btn-success">Salvar</button>
         <a href="{% url 'games:list-games' %}"> <button type="button" class="btn btn-danger">Cancelar</button> </a>
     </form>
 </div>
