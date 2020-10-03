@@ -5,7 +5,7 @@
  -->
 
 <p align="center">
-    <img src="https://img.olhardigital.com.br/uploads/acervo_imagens/2020/04/r4x3/20200423030657_860_645_-_python.jpg"><br/>
+    <img src="https://www.flaticon.com/svg/static/icons/svg/1822/1822899.svg"><br/>
     Projeto do desafio prático - Pública Tecnologia
 </p>
 
