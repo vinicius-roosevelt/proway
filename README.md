@@ -4,6 +4,11 @@
     Created by: Vinicius Roosevelt Santos Dias
  -->
 
+<p align="center">
+    <img src="https://img.olhardigital.com.br/uploads/acervo_imagens/2020/04/r4x3/20200423030657_860_645_-_python.jpg"><br/>
+    Projeto do desafio prático - Pública Tecnologia
+</p>
+
 <!-- ABOUT THE PROJECT -->
 ## Sobre o projeto
 
