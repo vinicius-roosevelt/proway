@@ -43,14 +43,14 @@ Considerando que o python já está instalado em sua máquina, devemos baixar o 
 
 Os passos para reprodução são:
 
-1. Clonar este repositório
+#### 1. Clonar este repositório
 Caso tenha o git instalado no computador, isso pode ser feito com o comando abaixo:
 ```
 git clone https://github.com/vinicius-roosevelt/proway.git
 ```
 Caso o git nao esteja instalado, voce pode fazer o download do código [aqui](https://github.com/vinicius-roosevelt/proway) e extrair a pasta compactada no diretório que desejar.
 
-2. Instalando dependencias e pacotes:
+#### 2. Instalando dependencias e pacotes:
 O sistema conta com algums pacotes python para que funcione normalmente. Para instalar tais pacotes, vá até a pasta '/env/Scripts'<br>
 Antes de instalar as dependencias, é necessário inicializar nosso ambiente virtual. Para isso devemos executar o seguinte comando:
 
@@ -61,7 +61,7 @@ activate.bat
 
 Se o ambiente virtual estiver inicializado, irá aparecer "(env)" no início das linhas de comando.
 
-4. Instale as dependencias no ambiente virtual
+#### 3. Instale as dependencias no ambiente virtual
 Para isso, volte até o diretório '/env' e digite o comando
 
 ```
@@ -70,7 +70,7 @@ pip install -r requirements.txt
 
 Com isso o python irá instalar, automaticamente, todos os pacotes que foram utilizados no sistema.
 
-5. Inicie o servidor web
+#### 4. Inicie o servidor web
 
 Depois de seguir os passos, nosso ambiente virtual está preparado e configurado para rodar o sistema. Agora, é preciso ir na pasta '/system/' e rodar o seguinte comando:
 
